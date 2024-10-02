@@ -7,10 +7,10 @@ st.title('NBA Players Scoring Averages')
 
 
 api_url = "https://api.balldontlie.io/v1/stats"
-params = {
+headers = {
     'Authorization': '92e8729b-7e58-4394-bd2e-06714a46df2a',
-    'season': 2024,
-    'per_page': 100
+    'season': '2023',
+    'per_page': '100'
 }
 
 
@@ -20,8 +20,8 @@ def load_data():
 
     while True:
 
-        params['page'] = page
-        response = requests.get(api_url, params=params)
+        headers['page'] = str(page)
+        response = requests.get(api_url, headers=headers)
         
 
         if response.status_code != 200:
