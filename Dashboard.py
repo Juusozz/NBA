@@ -13,7 +13,7 @@ headers = {
     'per_page': '100'
 }
 
-
+@st.cache_data
 def load_data():
     all_stats = []
     page = 1
