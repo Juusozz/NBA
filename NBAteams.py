@@ -2,14 +2,8 @@ import streamlit as st
 import requests
 import pandas as pd
 import os
-from dotenv import load_dotenv
-
-
 
 st.title('NBA Teams List')
-
-API_key = os.getenv('API_key')
-
 
 headers = {
     'per_page': '100',
@@ -17,7 +11,6 @@ headers = {
     # 'Authorization': API_key
 }
 # '92e8729b-7e58-4394-bd2e-06714a46df2a'
-
 
 @st.cache_data
 def load_teams():
@@ -41,14 +34,12 @@ def load_teams():
 
     return all_teams
 
-
 all_teams = load_teams()
-
 
 if not all_teams:
     st.warning("No teams found")
 else:
-    # Convert the data into a pandas DataFrame
+    
     df = pd.DataFrame(all_teams)
     
     teams_df = df[['full_name', 'abbreviation', 'conference', 'city']]
